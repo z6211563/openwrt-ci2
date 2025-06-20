@@ -102,6 +102,11 @@ jobs:
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
 
+    - name: Install Build Dependencies (安装编译依赖) # 添加这一步
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential clang
+
     - name: Download DL Package(下载DL软件包)
       run: |
         cd $OPENWRT_PATH
